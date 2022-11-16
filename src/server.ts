@@ -1,9 +1,13 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import "express-async-errors";
 import { routes } from "./routes";
-import { errors } from "./errors";
+import { errors } from "./config/errors";
+import { corsAdd } from "./config/cors";
 
 const app = express();
+
+app.use(corsAdd);
+
 app.use(express.json());
 
 app.use(routes);

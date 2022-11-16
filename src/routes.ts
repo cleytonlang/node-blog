@@ -28,7 +28,7 @@ routes.get("/user/", ensureAuthenticateUser, listUserController.list);
 routes.post("/user/", ensureAuthenticateUser, createUserController.create);
 routes.put("/user/:id", ensureAuthenticateUser, updateUserController.update);
 
-routes.get("/post/", ensureAuthenticateUser, listPostController.list);
+routes.get("/post/", listPostController.list);
 routes.post("/post/", ensureAuthenticateUser, createPostController.create);
 routes.put("/post/:id", ensureAuthenticateUser, updatePostController.update);
 
