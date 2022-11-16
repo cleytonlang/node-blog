@@ -2,10 +2,18 @@ import { Request, Response } from "express";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 export class CreateUserController {
-  async handle(request: Request, response: Response) {
-    const { username, password } = request.body;
+  async create(request: Request, response: Response) {
+    const { name, email, password } = request.body;
     const createUserUseCase = new CreateUserUseCase();
-    const result = await createUserUseCase.execute({ username, password });
+    const result = await createUserUseCase.create({ name, email, password });
+
+    return response.json(result);
+  }
+
+  async update(request: Request, response: Response) {
+    const { name, email, password } = request.body;
+    const createUserUseCase = new CreateUserUseCase();
+    const result = await createUserUseCase.update({ name, email, password });
 
     return response.json(result);
   }

@@ -1,10 +1,13 @@
 import { Router } from "express";
 import { AuthenticateUserController } from "./modules/account/authenticateUser/AuthenticateUserController";
 import { CreateUserController } from "./modules/users/useCases/createUser/CreateUserController";
-const createUserController = new CreateUserController();
-const authenticateUserController = new AuthenticateUserController();
+
 const routes = Router();
 
-routes.post("/authenticate", authenticateUserController.handle);
-routes.post("/user/", createUserController.handle);
+const createUserController = new CreateUserController();
+const authenticateUserController = new AuthenticateUserController();
+
+routes.post("/authenticate", authenticateUserController.authenticate);
+routes.post("/user/", createUserController.create);
+routes.put("/user/:id", createUserController.update);
 export { routes };
