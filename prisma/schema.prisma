@@ -27,6 +27,7 @@ model Posts {
   user        Users      @relation(fields: [user_id], references: [id])
   title       String
   description String
+  deleted     Boolean    @default(false)
   Comments    Comments[]
 
   @@map("posts")
