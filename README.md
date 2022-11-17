@@ -19,7 +19,7 @@ $ npm run start
 
 Autenticação
 ```
-#antenticar
+#Autenticar
 POST /authenticate
 ```
 
