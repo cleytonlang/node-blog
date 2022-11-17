@@ -26,11 +26,43 @@ POST /authenticate
 Usuário
 ```
 #Listagem
-GET /user/
+GET /user
 
 #Criação
-POST /user/
+POST /user
 
 #Atualização
 PUT /user/:id
+```
+
+Post
+```
+#Listagem
+GET /post
+
+#Criação
+POST /post
+
+#Atualização
+PUT /post/:id
+```
+
+View
+```
+#Listagem
+PATCH /post/view/
+
+#Criação
+POST /post/view
+
+```
+
+Like
+```
+#Listagem
+PATCH /post/like/
+
+#Criação
+POST /post/like
+
 ```
