@@ -1,6 +1,6 @@
 ## Description
 
-<p align="center">API criaca com <a href="http://nodejs.org" target="_blank">Node.js</a> e Typescript usando o framework<a href="https://expressjs.com/" target="_blank">Express</a>. Foi implementado usando o ORM <a href="http://nodejs.org" target="_blank">Prisma</a>, por tanto pode ser qualquer banco de dados, como default eu deixei o SQLite pra facilitar e agilizar o teste.</p>
+<p align="center">API criada com <a href="http://nodejs.org" target="_blank">Node.js</a> e Typescript usando o framework <a href="https://expressjs.com/" target="_blank">Express</a>. Foi implementado usando o ORM <a href="http://nodejs.org" target="_blank">Prisma</a>, por tanto pode ser utilizado qualquer banco de dados, como default eu deixei o SQLite pra facilitar e agilizar o teste.</p>
 
 ## Instalação
 
