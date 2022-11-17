@@ -2,11 +2,12 @@ import express from "express";
 import "express-async-errors";
 import { routes } from "./routes";
 import { errors } from "./config/errors";
-import { corsAdd } from "./config/cors";
+
+const cors = require("cors");
 
 const app = express();
 
-app.use(corsAdd);
+app.use(cors());
 
 app.use(express.json());
 

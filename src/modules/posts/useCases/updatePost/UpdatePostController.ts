@@ -4,6 +4,7 @@ import { UpdatePostUseCase } from "./UpdatePostUseCase";
 export class UpdatePostController {
   async update(request: Request, response: Response) {
     const { title, description, post_id, deleted } = request.body;
+    const { id } = request.params;
     const user_id = request.user_id;
 
     const updatePostUseCase = new UpdatePostUseCase();
@@ -11,7 +12,7 @@ export class UpdatePostController {
       title,
       description,
       user_id,
-      post_id,
+      id,
       deleted,
     });
 

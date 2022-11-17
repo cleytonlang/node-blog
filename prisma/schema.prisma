@@ -29,6 +29,8 @@ model Posts {
   description String
   deleted     Boolean    @default(false)
   Comments    Comments[]
+  Likes       Likes[]
+  Views       Views[]
 
   @@map("posts")
 }
@@ -42,4 +44,20 @@ model Comments {
   description String
 
   @@map("comments")
+}
+
+model Likes {
+  id      String @id @default(uuid())
+  post_id String
+  post    Posts  @relation(fields: [post_id], references: [id])
+
+  @@map("likes")
+}
+
+model Views {
+  id      String @id @default(uuid())
+  post_id String
+  post    Posts  @relation(fields: [post_id], references: [id])
+
+  @@map("views")
 }

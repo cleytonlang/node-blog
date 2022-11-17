@@ -2,9 +2,9 @@ import { prisma } from "../../../../database/prismaClient";
 import { hash } from "bcrypt";
 
 interface IUpdateUser {
-  name: string;
+  name?: string;
   email: string;
-  password: string;
+  password?: string;
   user_id: string;
 }
 
@@ -21,16 +21,20 @@ export class UpdateUserUseCase {
       throw new Error("User not exists");
     }
 
-    const hashPassword = await hash(password, 10);
+    const fields = {} as IUpdateUser;
+    if (name) {
+      fields.name = name;
+    }
+    if (password) {
+      const hashPassword = await hash(password, 10);
+      fields.password = hashPassword;
+    }
 
     return await prisma.users.update({
       where: {
         email: email,
       },
-      data: {
-        name,
-        password: hashPassword,
-      },
+      data: fields,
     });
   }
 }

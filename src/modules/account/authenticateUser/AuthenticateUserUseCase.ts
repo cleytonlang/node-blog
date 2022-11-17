@@ -30,6 +30,6 @@ export class AuthenticateUserUseCase {
       expiresIn: "1d",
     });
 
-    return token;
+    return { token, user_id: user.id, name: user.name, email: user.email };
   }
 }

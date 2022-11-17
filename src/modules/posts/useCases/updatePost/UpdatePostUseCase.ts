@@ -1,10 +1,10 @@
 import { prisma } from "../../../../database/prismaClient";
 
 interface IUpdatePost {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   user_id: string;
-  post_id: string;
+  id: string;
   deleted?: boolean;
 }
 
@@ -13,12 +13,12 @@ export class UpdatePostUseCase {
     title,
     description,
     user_id,
-    post_id,
+    id,
     deleted = false,
   }: IUpdatePost) {
     const userExist = await prisma.posts.findFirst({
       where: {
-        id: post_id,
+        id: id,
         user_id,
       },
     });
@@ -29,15 +29,19 @@ export class UpdatePostUseCase {
 
     const deletedPost = deleted ? true : false;
 
+    const items = { deleted: deletedPost } as IUpdatePost;
+    if (title) {
+      items.title = title;
+    }
+    if (description) {
+      items.description = description;
+    }
+
     return await prisma.posts.update({
       where: {
-        id: post_id,
+        id,
       },
-      data: {
-        title,
-        description,
-        deleted: deletedPost,
-      },
+      data: items,
     });
   }
 }

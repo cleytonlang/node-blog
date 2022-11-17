@@ -8,4 +8,11 @@ export class ListPostController {
 
     return response.json(result);
   }
+
+  async filter(request: Request, response: Response) {
+    const listPostUseCase = new ListPostUseCase();
+    const result = await listPostUseCase.list(request.user_id);
+
+    return response.json(result);
+  }
 }

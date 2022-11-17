@@ -11,6 +11,12 @@ import { ListPostController } from "./modules/posts/useCases/listPost/ListPostCo
 import { CreatePostController } from "./modules/posts/useCases/createPost/CreatePostController";
 import { UpdatePostController } from "./modules/posts/useCases/updatePost/UpdatePostController";
 
+import { CreateViewController } from "./modules/views/useCases/createView/CreateViewController";
+import { ListViewController } from "./modules/views/useCases/listView/ListViewController";
+
+import { CreateLikeController } from "./modules/likes/useCases/createLike/CreateLikeController";
+import { ListLikeController } from "./modules/likes/useCases/listLike/ListLikeController";
+
 const routes = Router();
 
 const authenticateUserController = new AuthenticateUserController();
@@ -22,14 +28,27 @@ const listPostController = new ListPostController();
 const createPostController = new CreatePostController();
 const updatePostController = new UpdatePostController();
 
+const createViewController = new CreateViewController();
+const listViewController = new ListViewController();
+
+const createLikeController = new CreateLikeController();
+const listLikeController = new ListLikeController();
+
 routes.post("/authenticate", authenticateUserController.authenticate);
 
 routes.get("/user/", ensureAuthenticateUser, listUserController.list);
-routes.post("/user/", ensureAuthenticateUser, createUserController.create);
+routes.post("/user/", createUserController.create);
 routes.put("/user/:id", ensureAuthenticateUser, updateUserController.update);
 
 routes.get("/post/", listPostController.list);
+routes.get("/post/filter", ensureAuthenticateUser, listPostController.filter);
 routes.post("/post/", ensureAuthenticateUser, createPostController.create);
 routes.put("/post/:id", ensureAuthenticateUser, updatePostController.update);
+
+routes.patch("/post/view", listViewController.list);
+routes.post("/post/view", createViewController.create);
+
+routes.patch("/post/like", listLikeController.list);
+routes.post("/post/like", createLikeController.create);
 
 export { routes };
