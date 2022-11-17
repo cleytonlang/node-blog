@@ -8,7 +8,7 @@
 $ npm install
 ```
 ## Variáveis de ambiente
-Antes de startar o projeto é necessário criar o .env para as variáveis de ambiente, coloqueo o conteúdo abaixo dentro do arquivo .env
+Antes de startar o projeto é necessário criar o .env para as variáveis de ambiente, coloque o conteúdo abaixo dentro do arquivo .env
 ```bash
 DATABASE_URL="file:./dev.db"
 PORT=3001
